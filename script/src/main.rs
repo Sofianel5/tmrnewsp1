@@ -34,7 +34,7 @@ fn main() {
 
     let client = ProverClient::new();
     let (pk, vk) = client.setup(ELF);
-    let mut proof = client.prove(&pk, stdin).run().expect("proving failed");
+    let mut proof = client.prove(&pk, stdin).groth16().run().expect("proving failed");
 
     // Read output.
     let state_root = proof.public_values.read::<[u8; 32]>();
